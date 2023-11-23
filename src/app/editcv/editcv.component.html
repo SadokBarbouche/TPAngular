@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-md-6 col-sm-6">
+        <app-detail-cv [personne]="personne"></app-detail-cv>
+    </div>
+    <div class="col-md-6 col-sm-6">
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" [(ngModel)]="personne.name" [value]="personne.name" >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Firstname</label>
+            <input type="text" class="form-control" [(ngModel)]="personne.firstname" [value]="personne.firstname">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Job</label>
+            <input type="text" class="form-control" [(ngModel)]="personne.job" [value]="personne.job">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Path</label>
+            <input type="text" class="form-control" [(ngModel)]="personne.path" [value]="personne.path">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Age</label>
+            <input type="text" class="form-control" [(ngModel)]="personne.age" [value]="personne.age">
+        </div>
+    </div>
+</div>

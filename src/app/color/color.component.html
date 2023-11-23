@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="parent col-md-6" [style.backgroundColor]="color">
+        {{color}}
+    </div>
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">Color</label>
+            <input #inputColor type="text" class="form-control" (change)="changeColor(inputColor)" >
+        </div>
+        <div class="mb-3">
+            <app-fils (SendColor)="changeBackgroun($event)" [parentColor]="color"></app-fils>
+        </div>
+    </div>
+
+</div>
+
+
