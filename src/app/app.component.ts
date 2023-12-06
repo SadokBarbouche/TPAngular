@@ -10,6 +10,7 @@ import { MiniwordComponent } from './directive/miniword/miniword.component';
 import { RainbowComponent } from './directive/rainbow/rainbow.component';
 import { EmbaucheComponent } from './Platform/cv/embauche/embauche.component';
 import { HeaderComponent } from './header/header.component';
+import { ObservableComponent } from './observable/observable.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -25,6 +26,7 @@ import { HeaderComponent } from './header/header.component';
     EmbaucheComponent,
     HeaderComponent,
     RouterModule,
+    ObservableComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

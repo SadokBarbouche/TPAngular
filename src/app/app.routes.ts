@@ -7,6 +7,7 @@ import { DeleteCvComponent } from './Platform/cv/delete-cv/delete-cv.component';
 import { AddCvComponent } from './Platform/cv/add-cv/add-cv.component';
 import { ErrorComponent } from './Platform/cv/error/error.component';
 import { LoginComponent } from './login/login.component';
+import { ObservableComponent } from './observable/observable.component';
 
 export const routes: Routes = [
   {
@@ -45,9 +46,16 @@ export const routes: Routes = [
     component: LoginComponent,
   },
   {
+    path:'observable',
+    component:ObservableComponent,
+  }
+  ,
+  {
     path: '**',
     component: ErrorComponent,
   },
+
+
 ];
 
 export const ROUTING = RouterModule.forRoot(routes);
