@@ -3,10 +3,10 @@
         <div class="card">
             <div class="front">
                 <div class="cover">
-                    <img src="assets/images/rotating_card_thumb2.png" />
+                    <img src="../../../assets/images/default.png" />
                 </div>
                 <div class="user">
-                    <img class="img-circle" src="assets/images/{{ personne.path | defaultImage }}" />
+                    <img class="img-circle" src="../../../assets/images/{{ personne.path | defaultImage }}" />
                 </div>
                 <div class="content">
                     <div class="main">
@@ -51,11 +51,9 @@
                     <button class="btn btn-danger" (click)="embaucher()">
             Embaucher
           </button>
+                    <button class="btn btn-dark" (click)="details()">Details</button>
                 </div>
             </div>
-            <!-- end back panel -->
         </div>
-        <!-- end card -->
     </div>
-    <!-- end card-container -->
 </div>

@@ -6,6 +6,7 @@ import { Personne } from '../../Model/Personne';
 import { DefaultImagePipe } from '../default-image.pipe';
 import { CvServiceService } from './cv-service.service';
 import { EmbaucheComponent } from './embauche/embauche.component';
+import { PageDetailComponent } from './page-detail/page-detail.component';
 
 @Component({
   selector: 'app-cv',
@@ -16,6 +17,7 @@ import { EmbaucheComponent } from './embauche/embauche.component';
     ListeCvComponent,
     EmbaucheComponent,
     DefaultImagePipe,
+    PageDetailComponent,
   ],
   templateUrl: './cv.component.html',
   styleUrl: './cv.component.css',

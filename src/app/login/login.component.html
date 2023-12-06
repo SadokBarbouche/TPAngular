@@ -1,0 +1,9 @@
+<form #loginForm="ngForm">
+    <label for="email">Email</label>
+    <input required type="email" name="email" class="form-control" id="email" />
+    <label for="password">Password</label>
+    <input required ngModel type="password" name="password" class="form-control" minlength="4" id="password" />
+    <button [disabled]="loginForm.invalid" class="btn btn-secondary my-3">
+    Login
+  </button>
+</form>
