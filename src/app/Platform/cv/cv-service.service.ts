@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Personne } from '../../Model/Personne';
 import { ToastrService } from 'ngx-toastr';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class CvServiceService {
   private personnes: Personne[];
-  constructor(private toastr: ToastrService) {
+  link = 'https://apilb.tridevs.net/api/personnes';
+  constructor(private toastr: ToastrService, private http: HttpClient) {
     this.personnes = [
       new Personne(
         1,
@@ -29,9 +32,16 @@ export class CvServiceService {
       new Personne(2, 'Test', 'Tp', 30, 450124, 'Student', ''),
     ];
   }
-  getPersonnes(): Personne[] {
+  // getPersonnes(): Personne[] {
+  //   return this.personnes;
+  // }
+  getPersonnes(): Observable<Personne[]> {
+    return this.http.get<Personne[]>(this.link);
+  }
+  getFakeData() {
     return this.personnes;
   }
+
   getPersonById(id: number): Personne | undefined {
     return this.personnes.find((person) => person.id == id);
   }
