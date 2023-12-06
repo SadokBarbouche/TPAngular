@@ -18,7 +18,7 @@ import { ToastrService } from 'ngx-toastr';
     ListeCvComponent,
     EmbaucheComponent,
     DefaultImagePipe,
-    PageDetailComponent
+    PageDetailComponent,
   ],
   templateUrl: './cv.component.html',
   styleUrl: './cv.component.css',
@@ -30,6 +30,7 @@ export class CvComponent implements OnInit {
     private cvService: CvServiceService,
     private toastr: ToastrService
   ) {}
+
   ngOnInit(): void {
     this.cvService.getPersonnes().subscribe(
       (personnes) => {

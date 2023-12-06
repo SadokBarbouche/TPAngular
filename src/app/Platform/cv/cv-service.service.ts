@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { Personne } from '../../Model/Personne';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -32,12 +34,30 @@ export class CvServiceService {
       new Personne(3, 'Test', 'Tp', 30, 450124, 'Student', ''),
     ];
   }
+
   // getPersonnes(): Personne[] {
   //   return this.personnes;
   // }
+
+  // getPersonnes(): Observable<Personne[]> {
+  //   return this.http.get<Personne[]>(this.link);
+  // }
+
   getPersonnes(): Observable<Personne[]> {
-    return this.http.get<Personne[]>(this.link);
+    return this.http.get<Personne[]>(this.link).pipe(
+      tap((apiData) => {
+        this.personnes = apiData;
+      }),
+      catchError((error) => {
+        console.error(
+          'Error fetching API data. Using fake data instead.',
+          error
+        );
+        return of(this.getFakeData());
+      })
+    );
   }
+
   getFakeData() {
     return this.personnes;
   }
