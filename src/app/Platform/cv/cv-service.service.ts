@@ -29,7 +29,7 @@ export class CvServiceService {
         'Chanteur',
         'rotating_card_profile3.png'
       ),
-      new Personne(2, 'Test', 'Tp', 30, 450124, 'Student', ''),
+      new Personne(3, 'Test', 'Tp', 30, 450124, 'Student', ''),
     ];
   }
   // getPersonnes(): Personne[] {

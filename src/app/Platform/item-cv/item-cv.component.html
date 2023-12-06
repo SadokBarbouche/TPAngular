@@ -1,5 +1,3 @@
-<li class="list-group-item"
-    (click)="selectPersonne()">
-    <img src="assets/images/{{personne.path|defaultImage}}" 
-         alt="personne.name"> {{personne.name}} {{personne.firstname}}
+<li class="list-group-item" (click)="selectPersonne()">
+    <img src="assets/images/{{ personne.path | defaultImage }}" alt="{{ personne.name }}" /> {{ personne.name }} {{ personne.firstname }}
 </li>

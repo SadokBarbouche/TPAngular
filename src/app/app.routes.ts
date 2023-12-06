@@ -3,7 +3,7 @@ import { CvComponent } from './Platform/cv/cv.component';
 import { ColorComponent } from './color/color.component';
 import { DetailCvComponent } from './Platform/detail-cv/detail-cv.component';
 import { PageDetailComponent } from './Platform/cv/page-detail/page-detail.component';
-import { DeleteCvComponent } from './Platform/cv/delete-cv/delete-cv.component';
+// import { DeleteCvComponent } from './Platform/cv/delete-cv/delete-cv.component';
 import { AddCvComponent } from './Platform/cv/add-cv/add-cv.component';
 import { ErrorComponent } from './Platform/cv/error/error.component';
 import { LoginComponent } from './login/login.component';
@@ -20,7 +20,7 @@ export const routes: Routes = [
       // },
       {
         path: 'delete/:id',
-        component: DeleteCvComponent,
+        component: CvComponent,
       },
       {
         path: 'add/:id',
@@ -46,16 +46,13 @@ export const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path:'observable',
-    component:ObservableComponent,
-  }
-  ,
+    path: 'observable',
+    component: ObservableComponent,
+  },
   {
     path: '**',
     component: ErrorComponent,
   },
-
-
 ];
 
 export const ROUTING = RouterModule.forRoot(routes);

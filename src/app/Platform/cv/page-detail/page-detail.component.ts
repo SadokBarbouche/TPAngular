@@ -15,9 +15,17 @@ import { DefaultImagePipe } from '../../default-image.pipe';
 export class PageDetailComponent implements OnInit {
   constructor(
     private cvService: CvServiceService,
-    private activatedRouter: ActivatedRoute
+    private activatedRouter: ActivatedRoute,
+    private router: Router
   ) {}
   personne?: Personne;
+  deletePersonne() {
+    this.activatedRouter.params.subscribe((params) => {
+      const id = params['id'];
+      this.cvService.deletePersonById(id);
+      this.router.navigate(['cv']);
+    });
+  }
   ngOnInit(): void {
     this.activatedRouter.params.subscribe((params) => {
       const id = params['id'];
@@ -25,4 +33,3 @@ export class PageDetailComponent implements OnInit {
     });
   }
 }
-  
