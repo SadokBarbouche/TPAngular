@@ -7,18 +7,26 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-editcv',
   standalone: true,
-  imports: [CommonModule,DetailCvComponent,FormsModule],
+  imports: [CommonModule, DetailCvComponent, FormsModule],
   templateUrl: './editcv.component.html',
-  styleUrl: './editcv.component.css'
+  styleUrl: './editcv.component.css',
 })
 export class EditcvComponent implements OnInit {
-  personne!:Personne;
+  personne!: Personne;
 
-  constructor(){
-    this.personne=new Personne(1,"Rjiba","Ahmed",18,777777,"Student","rotating_card_profile2.png")
+  constructor() {
+    this.personne = new Personne(
+      1,
+      'Besbes',
+      'Med Seifeddine',
+      24,
+      88888,
+      'Student',
+      'rotating_card_profile2.png'
+    );
   }
 
   ngOnInit(): void {
-    console.log(this.personne)
+    console.log(this.personne);
   }
 }

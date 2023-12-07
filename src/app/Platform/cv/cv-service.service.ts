@@ -87,17 +87,16 @@ export class CvServiceService {
   //   );
   // }
 
-  // Mouch optimal jemla w impossible shih 
+  // Mouch optimal jemla w impossible shih
+  
   getPersonnes(): Observable<Personne[]> {
     return this.http.get<Personne[]>(this.link).pipe(
       tap((apiData) => {
         this.personnes = apiData;
-
         for (const deletedPerson of this.deletedPersonnes) {
           const index = this.personnes.findIndex(
             (person) => person.id === deletedPerson.id
           );
-
           if (index !== -1) {
             this.personnes.splice(index, 1);
           }
