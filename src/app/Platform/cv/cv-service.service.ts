@@ -10,6 +10,7 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class CvServiceService {
   private personnes: Personne[];
+  private deletedPersonnes: Personne[];
   link = 'https://apilb.tridevs.net/api/personnes';
   constructor(private toastr: ToastrService, private http: HttpClient) {
     this.personnes = [
@@ -33,6 +34,7 @@ export class CvServiceService {
       ),
       new Personne(3, 'Test', 'Tp', 30, 450124, 'Student', ''),
     ];
+    this.deletedPersonnes = [];
   }
 
   // getPersonnes(): Personne[] {
@@ -43,25 +45,9 @@ export class CvServiceService {
   //   return this.http.get<Personne[]>(this.link);
   // }
 
-  getPersonnes(): Observable<Personne[]> {
-    return this.http.get<Personne[]>(this.link).pipe(
-      tap((apiData) => {
-        this.personnes = apiData;
-      }),
-      catchError((error) => {
-        console.error(
-          'Error fetching API data. Using fake data instead.',
-          error
-        );
-        return of(this.getFakeData());
-      })
-    );
-  }
-
   getFakeData() {
     return this.personnes;
   }
-
   getPersonById(id: number): Personne | undefined {
     return this.personnes.find((person) => person.id == id);
   }
@@ -80,8 +66,50 @@ export class CvServiceService {
             'absolute top-0 left-1/2 transform -translate-x-1/2 text-gray-900 p-4 rounded-md bg-green-300',
         }
       );
+      this.deletedPersonnes.push(this.personnes[index]);
       this.personnes.splice(index, 1);
       return true;
     }
+  }
+
+  // getPersonnes(): Observable<Personne[]> {
+  //   return this.http.get<Personne[]>(this.link).pipe(
+  //     tap((apiData) => {
+  //       this.personnes = apiData;
+  //     }),
+  //     catchError((error) => {
+  //       console.error(
+  //         'Error fetching API data. Using fake data instead.',
+  //         error
+  //       );
+  //       return of(this.getFakeData());
+  //     })
+  //   );
+  // }
+
+  // Mouch optimal jemla w impossible shih 
+  getPersonnes(): Observable<Personne[]> {
+    return this.http.get<Personne[]>(this.link).pipe(
+      tap((apiData) => {
+        this.personnes = apiData;
+
+        for (const deletedPerson of this.deletedPersonnes) {
+          const index = this.personnes.findIndex(
+            (person) => person.id === deletedPerson.id
+          );
+
+          if (index !== -1) {
+            this.personnes.splice(index, 1);
+          }
+        }
+      }),
+      catchError((error) => {
+        console.error(
+          'Error fetching API data. Using fake data instead.',
+          error
+        );
+        return of(this.getFakeData());
+      })
+    );
   }
 }

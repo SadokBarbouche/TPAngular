@@ -1,6 +1,6 @@
 <form #loginForm="ngForm">
     <label for="email">Email</label>
-    <input required type="email" ngModel name="email" class="form-control" id="email" #inputMail="ngModel" />
+    <input required type="email" ngModel email name="email" class="form-control" id="email" #inputMail="ngModel" />
     <div class="alert alert-danger" *ngIf="inputMail.invalid && inputMail.dirty">
         Le mail doit être valide
     </div>

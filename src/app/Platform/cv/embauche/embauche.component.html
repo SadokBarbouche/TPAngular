@@ -1,9 +1,9 @@
-<div *ngIf="personnes" style="display: flex;">
+<div *ngIf="personnes" style="display: flex">
     <span class="mx-3" *ngFor="let personne of personnes; let i = index">
     <li class="list-group-item">
       <img
         src="assets/images/{{ personne.path | defaultImage }}"
-        alt="personne.name"
+        alt="{{ personne.name }}"
       />
       {{ personne.name }} {{ personne.firstname }}
     </li>
